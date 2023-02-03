@@ -29,9 +29,6 @@ function name(yourName) {
   return name;
 }
 
-const myName = name("Lukasz");
-console.log(myName);
-
 //3. Napisz funkcję, która jako argument przyjmować będzie wiek,
 // natomiast powinna zwracać wiek przeliczony na dni.
 // Przyjmijmy, że rok ma 365dni i nie zwracamy uwagi na lata przestępne.
@@ -46,11 +43,42 @@ function ageInDays(age) {
   return ageInDays;
 }
 
-const myAgeInDays = ageInDays(27);
+const myAgeInDays = ageInDays(27.5);
 console.log(myAgeInDays);
 
 const kingasAgeInDays = ageInDays(24);
 console.log(kingasAgeInDays);
+
+const manAgeInDays = ageInDays(74);
+console.log(manAgeInDays);
+
+function daysLeftToDeath(age, gender) {
+  let daysLeft;
+  if (gender === "man") {
+    daysLeft = 26280 - ageInDays(age);
+  } else {
+    daysLeft = 29930 - ageInDays(age);
+  }
+  return daysLeft;
+}
+
+const daysToDeathLukasz = daysLeftToDeath(27, "man");
+console.log(daysToDeathLukasz);
+
+const daysToDeathKinga = daysLeftToDeath(24, "woman");
+console.log(daysToDeathKinga);
+
+//Napisz funkcję, która będzie przyjmować dwa parametry będące liczbami całkowitymi. Powinna zwracać wartość true, jeżeli jeden z argumentów jest liczbą 12, lub suma obu argumentów wynosi 12.
+
+function twelveTrue(num1, num2) {
+  if (num1 === 12 || num2 === 12 || num1 + num2 === 12) {
+    return "true";
+  }
+  return "false";
+}
+
+const isItTwelve = twelveTrue(6, 6);
+console.log(isItTwelve);
 
 /// MAP FUNCTION
 

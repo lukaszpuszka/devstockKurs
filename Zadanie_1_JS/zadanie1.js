@@ -1,39 +1,39 @@
 //  DANE WEJŚCIOWE
 const people = [
-    {
-      firstName: "Bartolomeo",
-      lastName: "Lozano",
-    },
-    {
-      firstName: "Mateo",
-      lastName: "Loza",
-    },
-  ];
-  
-  function createNickname(person) {
-    //a)
-    let firstPart = person.firstName.slice(0, 3).split("").reverse().join("");
-    //b) part 1
-    let secondPart = person.lastName.slice(-3).split("").reverse().join("");
-    //d)
-    if (person.lastName.length < 3) {
-      secondPart = person.lastName;
-    }
-    //b)part 2
-    let nickname = firstPart + secondPart;
-    // c*)
-    nickname = nickname.charAt(0).toUpperCase() + nickname.slice(1).toLowerCase();
-    return nickname;
+  {
+    firstName: "Bartolomeo",
+    lastName: "Lozano",
+  },
+  {
+    firstName: "Mateo",
+    lastName: "Loza",
+  },
+];
+
+function createNickname(person) {
+  //a)
+  let firstPart = person.firstName.slice(0, 3).split("").reverse().join("");
+  //b) part 1
+  let secondPart = person.lastName.slice(-3).split("").reverse().join("");
+  //d)
+  if (person.lastName.length < 3) {
+    secondPart = person.lastName;
   }
-  // funkcja mapPeople zwraca tablicę obiektów zawierających właściwość nickname, która jest mapowana z tablicy people uzywając funkcji createNickname
-  function mapPeople(people) {
-    return people.map(createNickname);
-  }
-  //przypisujamy zmienną peopleWithNicknames do wyniku funkcji mapPeople z argumentem tablicą people. Logujemy w konsoli wartość peopleWithNicknames.
-  const peopleWithNicknames = mapPeople(people);
-  console.log(peopleWithNicknames);
-  
-  /* 
+  //b)part 2
+  let nickname = firstPart + secondPart;
+  // c*)
+  nickname = nickname.charAt(0).toUpperCase() + nickname.slice(1).toLowerCase();
+  return nickname;
+}
+// funkcja mapPeople zwraca tablicę obiektów zawierających właściwość nickname, która jest mapowana z tablicy people uzywając funkcji createNickname
+function mapPeople(people) {
+  return people.map(createNickname);
+}
+//przypisujamy zmienną peopleWithNicknames do wyniku funkcji mapPeople z argumentem tablicą people. Logujemy w konsoli wartość peopleWithNicknames.
+const peopleWithNicknames = mapPeople(people);
+console.log(peopleWithNicknames);
+
+/* 
       1. Napisz funkcję mapującą, która utworzy klucz(właściwość) nickname na każdej osobie w tablicy w następujący sposób:
       a) pobierze 3 pierwsze litery imienia, odwróci ich kolejność i zapisze do zmiennej
       //onazoL
@@ -61,32 +61,32 @@ const people = [
       - Na tablicy możemy użyć metody reverse()
       - Na stringach czy pojedynczych literkach możemy używać metod toLowerCase(), toUpperCase()
   */
-  
-  //  DANE WEJŚCIOWE
-  const people2 = [
-    {
-      firstName: "Bartolomeo",
-      lastName: "Lozano",
-      nickname: "Rabona",
-      // Metoda introduceYourself jest właściwością pierwszego obiektu w tablicy people2. Gdy jest wywoływana loguje w konsoli wiadomość skonstruowaną ze właściwości obiektu oraz stringa zapisanego za pomocą template literals oraz słówka this które jest uzwane aby uzyskać dostęp do właściwości obiektu.
-      introduceYourself: function () {
-        console.log(
-          `Cześć jestem ${this.firstName} ${this.lastName}, ale w szkole mówią na mnie ${this.nickname}`
-        );
-      },
+
+//  DANE WEJŚCIOWE
+const people2 = [
+  {
+    firstName: "Bartolomeo",
+    lastName: "Lozano",
+    nickname: "Rabona",
+    // Metoda introduceYourself jest właściwością pierwszego obiektu w tablicy people2. Gdy jest wywoływana loguje w konsoli wiadomość skonstruowaną ze właściwości obiektu oraz stringa zapisanego za pomocą template literals oraz słówka this które jest uzwane aby uzyskać dostęp do właściwości obiektu.
+    introduceYourself: function () {
+      console.log(
+        `Cześć jestem ${this.firstName} ${this.lastName}, ale w szkole mówią na mnie ${this.nickname}`
+      );
     },
-  ];
-  //a)
-  //wywołujemy metodę introduceYourself uzywając notacji kropkowej z pierwszego obiektu z indexem 0 tablicy people2
-  people2[0].introduceYourself();
-  
-  //b)
-  //uzywając metody forEach skanujemy tablicę people2 i wywołujemy metodę introduceYourself dla kazdego elementu tablicy ktorym jest w tym przypadku jeden obiekt reprezentujacy osobę.
-  people2.forEach(function (person) {
-    person.introduceYourself();
-  });
-  
-  /* 
+  },
+];
+//a)
+//wywołujemy metodę introduceYourself uzywając notacji kropkowej z pierwszego obiektu z indexem 0 tablicy people2
+people2[0].introduceYourself();
+
+//b)
+//uzywając metody forEach skanujemy tablicę people2 i wywołujemy metodę introduceYourself dla kazdego elementu tablicy ktorym jest w tym przypadku jeden obiekt reprezentujacy osobę.
+people2.forEach(function (person) {
+  person.introduceYourself();
+});
+
+/* 
       2. 
       a) Do każdego obiektu dodaj funkcję introduceYourself, która za pomocą słówka this wyświetli w konsoli tekst powitalny.
       Oczywiście tekst powinien wyświetlić się dopiero po wywołaniu funkcji.
@@ -111,46 +111,46 @@ const people = [
       - postaraj się zdefiniować funkcję powitalną tylko raz (nie rób tego w pętli, ani funkcji map)
       
   */
-  
-  //  DANE WEJŚCIOWE
-  
-  const people3 = [
-    {
-      firstName: "Bartolomeo",
-      lastName: "Lozano",
-      nickname: "Rabona",
-      // a) d) W przypadku wywołania funkcji bez parametru ustawiamy domyślny parametr = 5.
-      getFavouriteColor: function (number = 5) {
-        if (number < 1) {
-          console.log(
-            "podałeś za małą liczbę, liczba nie może być mniejsza niż 1"
-          );
-          //c) jeśli liczba jest mniejsze niz 1 zatrzymujemy funkcję uzwając pustego komunikatu return
-          return;
-        } else if (number > 30) {
-          console.log(
-            "podałeś za dużą liczbę, liczba nie może być większa niż 30"
-          );
-          return;
-        }
-        //
-        //e)Zapisujemy do zmiennej namesSum sumę długości trzech właściwości tego obiektu.
-        let namesSum =
-          this.firstName.length + this.lastName.length + this.nickname.length;
-  
-        //e) Wyliczamy index koloru z tablicy colours na podstawie reszty z dzielenia róznicy wartości absolutnej, namesSum oraz liczby podanej w parametrze z długością tablicy colours.
-        let index = Math.abs(namesSum - number) % colors.length;
-        //Wywołujemy odpowiednia pozycję z tablicy
-        console.log(colors[index]);
-      },
+
+//  DANE WEJŚCIOWE
+
+const people3 = [
+  {
+    firstName: "Bartolomeo",
+    lastName: "Lozano",
+    nickname: "Rabona",
+    // a) d) W przypadku wywołania funkcji bez parametru ustawiamy domyślny parametr = 5.
+    getFavouriteColor: function (number = 5) {
+      if (number < 1) {
+        console.log(
+          "podałeś za małą liczbę, liczba nie może być mniejsza niż 1"
+        );
+        //c) jeśli liczba jest mniejsze niz 1 zatrzymujemy funkcję uzwając pustego komunikatu return
+        return;
+      } else if (number > 30) {
+        console.log(
+          "podałeś za dużą liczbę, liczba nie może być większa niż 30"
+        );
+        return;
+      }
+      //
+      //e)Zapisujemy do zmiennej namesSum sumę długości trzech właściwości tego obiektu.
+      let namesSum =
+        this.firstName.length + this.lastName.length + this.nickname.length;
+
+      //e) Wyliczamy index koloru z tablicy colours na podstawie reszty z dzielenia róznicy wartości absolutnej, namesSum oraz liczby podanej w parametrze z długością tablicy colours.
+      let index = Math.abs(namesSum - number) % colors.length;
+      //Wywołujemy odpowiednia pozycję z tablicy
+      console.log(colors[index]);
     },
-  ];
-  
-  const colors = ["red", "green", "yellow", "blue", "pink", "orange"];
-  
-  people3[0].getFavouriteColor(4);
-  
-  /*
+  },
+];
+
+const colors = ["red", "green", "yellow", "blue", "pink", "orange"];
+
+people3[0].getFavouriteColor(4);
+
+/*
       3. 
       a) Dodaj do każdego obiektu funkcję getFavouriteColor
       b) funkcja ma przyjmować jeden parametr typu number z zakresu 1 - 30
@@ -173,49 +173,44 @@ const people = [
       - w funkcji musicie użyć słówka this, parametru i tablicy, która jest na zewnątrz, tablica z kolorami może mieć
       dowoloną ilość kolorów
   */
-  
-  const people4 = [
-    {
-      firstName: "Bartolomeo",
-      lastName: "Lozano",
-      nickname: "Rabona",
-    },
-    ]
-  
-    function getFavouriteColor(person, number = 5) {
-        if (number < 1) {
-          console.log(
-            "podałeś za małą liczbę, liczba nie może być mniejsza niż 1"
-          );
-          return;
-        } else if (number > 30) {
-          console.log(
-            "podałeś za dużą liczbę, liczba nie może być większa niż 30"
-          );
-          return;
-        }
-        let namesSum =
-          this.firstName.length + this.lastName.length + this.nickname.length;
-        let index = Math.abs(namesSum - number) % colors.length;
-        console.log(colors[index]);
-        
-        for (const person of persons) {
-          console.log(`${person.firstName} ${person.lastName}'s favourite color is`);
-          getFavouriteColor(person);
-        }
-    
-  
-  const colors = ["red", "green", "yellow", "blue", "pink", "orange"];
-  
-  
-  /*
+
+const people4 = [
+  {
+    firstName: "Bartolomeo",
+    lastName: "Lozano",
+    nickname: "Rabona",
+  },
+];
+
+function getFavouriteColor(person, number = 5) {
+  if (number < 1) {
+    console.log("podałeś za małą liczbę, liczba nie może być mniejsza niż 1");
+    return;
+  } else if (number > 30) {
+    console.log("podałeś za dużą liczbę, liczba nie może być większa niż 30");
+    return;
+  }
+  let namesSum =
+    this.firstName.length + this.lastName.length + this.nickname.length;
+  let index = Math.abs(namesSum - number) % colors.length;
+  console.log(colors[index]);
+
+  for (const person of persons) {
+    console.log(`${person.firstName} ${person.lastName}'s favourite color is`);
+    getFavouriteColor(person);
+  }
+}
+
+const colors = ["red", "green", "yellow", "blue", "pink", "orange"];
+
+/*
       4. Napisz funkcję analogiczną do funkcji z zadania 3, ale nie dodawaj jej w obiekcie.
       a) funkcja powinna przyjąć 2 parametry (obiekt osoby i liczbę z zakresu 1 - 30)
       b) funkcja powinna wykonać dokładnie takie samo działanie jak poprzednia
       c) Za pomocą pętli for of przeiteruj po wszystkich osobach z tablicy i wyświetl ich ulubione kolory
   */
-  
-  /*
+
+/*
       5. Zadanie polega na użyciu .filter() .map() .reduce w wersji łańcuchowej,
       czyli nie twórz nowych tablic w momencie wykonanie jednej z powyższych metod, połącz wykonanie ze sobą w jeden 
       "łańcuch" tzn. const wynik = arr.filter().map().reduce()
@@ -252,8 +247,8 @@ const people = [
       imię, którego chociaż jedna litera jest większa >= s
       g) posortuj tablicę alfabetycznie
   */
-  
-  /*
+
+/*
       *6. Currying function
       a) Napisz taką funkcję mnożącą 2 liczby, aby możliwe były następujące wywołania:
       - multi(5)(6)
@@ -266,16 +261,16 @@ const people = [
       - funkcja może zwracać inne funkcje
       - funkcja może korzystać ze zmiennych i parametrów funkcji zewnętrznych (czyli tych w których się znajduje)
   */
-  
-  /*
+
+/*
       **7. Rekurencja
        a) Mając zagnieżdżony obiekt, wyciągnij z niego wszystkie imiona i dodaj do tablicy
        ***b) Jeżeli osoba ma więcej niż jedno imię, te imiona powinny znajdować się w jednym stringu w tablicy
        Na przykład 'Kamil Bartek'
       INPUT:
   */
-  
-  /*
+
+/*
   const nestedObject = {
     name: "Kamil",
     children: [

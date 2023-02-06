@@ -115,3 +115,48 @@ console.log(isItTwelve);
 // }
 
 // console.log(namesMapped)
+
+// 1. Accessing and updating elements: You should be familiar with accessing elements in an array using their index, as well as updating them.
+
+// 2. Adding and removing elements: You should be familiar with adding and removing elements from an array using methods such as push(), pop(), shift(), unshift(), splice(), etc.
+
+//////////////////////////////////////////////////////
+// 3. Iterating over arrays: You should be familiar with iterating over the elements of an array using for loops, forEach() method, map() method, reduce() method, etc.
+
+//Array with mixed data types
+let mixedArray = [1, "2", { key: "value" }];
+
+console.log(mixedArray);
+
+// convert mixedArray to numbers using .map
+
+let numbers = mixedArray.map(function (element) {
+  return Number(element);
+});
+console.log(numbers);
+
+// convert mixedArray to strings using .map
+
+let strings = mixedArray.map(function (element) {
+  return String(element);
+});
+console.log(strings);
+
+// convert mixedArray to objects using .map
+
+let objects = mixedArray.map(function (element) {
+  return Object(element);
+});
+console.log(objects);
+
+//////////////////////////////////////////////
+// 4. Filtering arrays: You should be familiar with filtering arrays to create a new array that contains only elements that meet certain criteria, using the filter() method.
+
+let filteredNumbers = numbers.filter(function (numb) {
+  return numb >= 1;
+});
+console.log(filteredNumbers);
+
+// 5. Sorting arrays: You should be familiar with sorting arrays in ascending or descending order, using the sort() method.
+// 6. Searching arrays: You should be familiar with searching for elements in an array using methods such as indexOf(), lastIndexOf(), includes(), etc.
+// 7. Merging arrays: You should be familiar with merging two or more arrays into one array using methods such as concat() or the spread operator ....
